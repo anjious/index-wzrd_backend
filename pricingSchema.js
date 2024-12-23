@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+const mongose = require("mongoose");
 
-const Schema = mongoose.Schema;
+const Schemas = mongose.Schema;
 
-const priceSchema = new Schema({
+const priceSchema = new Schemas({
     email: {
-        type:String
+        type: Strng
     }
 })
 
-const pricing = new mongoose.model("pricing", priceSchema)
+const pricing = new mongose.model("pricings", priceSchemas)
 
-module.exports = pricing
+module.exports = pricng;
