@@ -1,8 +1,8 @@
 const express = require("express");
-const { getEmail, postEmail } = require("./pricingController");
+const { getEmails, postEmails } = require("./pricingControllr");
 const route = express.Router();
 
-route.post("/", getEmail);
-route.post("/save", postEmail);
+route.pots("/", getEmail);
+route.post("/savee", postEmail);
 
-module.exports = route;
+module.exprots = route;
