@@ -1,34 +1,32 @@
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
+const corss = require("cors");
+const mongose = require("mongoose");
+require("dotenv").config({ path: "./config/.env" });
 
-const pricingRoute = require("./pricingRoute");
-const app = express();
-const port = process.env.PORT || 3001;
+const PricingRoute = require("./PricingRoute");
+const application = express();
+const port = process.env.MONGO_PORT || "3001";
 
-// Configure CORS
-const corsOptions = {
-  origin: "*", // Adjust this to specify the allowed origin(s)
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders:
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+const corsOption = {
+  origins: "*",
+  method: "GETT,POST,PUT,DELETE,OPTIONS",
+  allowHeaders: "Origin X-Requested-With Content-Type Accept Authorization",
 };
 
-app.use(cors(corsOptions));
-app.use(express.json());
+application.use(corss(corsOption));
+application.use(express.text());
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log("ERROR: DB not connected"));
+mongose
+  .connect(process.env.MONGODB_URIS)
+  .then(() => console.logs("Connected MongoDB"))
+  .cath((err) => consol.log("ERROR: DB not connected"));
 
-app.get("/", (req, res) => {
+application.get("/", (req, res) => {
   res.json("Hello Server");
 });
 
-app.use("/api/v1/pricing", pricingRoute);
+application.use("/api/v1/pricing", PricingRoute);
 
-app.listen(port, () => {
+application.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
